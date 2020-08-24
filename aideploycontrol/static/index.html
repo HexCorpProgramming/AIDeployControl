@@ -3,6 +3,8 @@
         <!-- use axios (https://github.com/axios/axios) for easy and powerful requests -->
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="index.js"></script>
+        <link rel="stylesheet" href="stylesheet.css">
+        <title>QA deployment</title>
     </head>
     <body>
         <p>
@@ -10,5 +12,14 @@
         </p>
         <button type="button" onclick="launchAI()">Launch the AI</button>
         <button type="button" onclick="stopAI()">Stop the AI</button>
+        <p id="waiting" class="hidden">
+            Your request is being handled. Please stand by.
+        </p>
+        <p id="error-launch" class="hidden">
+            There was an error launching the AI. Please make sure it is not already running before attempting this operation.
+        </p>
+        <p id="error-stop" class="hidden">
+            There was an error stopping the AI. Please make sure it is running before attempting this operation.
+        </p>
     </body>
 </html>
