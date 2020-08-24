@@ -1,10 +1,14 @@
 <html>
     <head>
-
+        <!-- use axios (https://github.com/axios/axios) for easy and powerful requests -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="index.js"></script>
     </head>
     <body>
         <p>
             Welcome to the deployment interface for the QA instance of the HexCorp Mxtress AI.
         </p>
+        <button type="button" onclick="launchAI()">Launch the AI</button>
+        <button type="button" onclick="stopAI()">Stop the AI</button>
     </body>
 </html>
