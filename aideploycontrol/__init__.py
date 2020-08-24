@@ -2,6 +2,10 @@ import os
 
 from flask import Flask
 
+from aideploycontrol import control
+
+CONTROL = control.Control()
+
 
 def create_app(test_config=None):
     # create and configure the app
@@ -20,9 +24,14 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    # a simple page that says hello
-    @app.route('/hello')
-    def hello():
-        return 'Hello, World!'
+    @app.route("/launch", methods=["POST"])
+    def launch():
+        CONTROL.launch()
+        return ""
+
+    @app.route("/stop", methods=["POST"])
+    def stop():
+        CONTROL.stop()
+        return ""
 
     return app
