@@ -1,0 +1,7 @@
+# Python and flask
+/env
+__pycache__
+/instance
+
+# VS Code
+/.vscode
