@@ -1,5 +1,37 @@
 * {
     font-family: sans-serif;
+    color: white;
+    background-color: #231929;
+}
+
+body {
+    padding: 10vh 20vw;
+}
+
+.button {
+    padding: 12px 20px;
+    border-color: #ac48ac;
+    border-radius: 2px;
+}
+
+@keyframes hover-glow {
+    from   {border-color: #ac48ac;}
+    to {border-color: #ff66ff;}
+}
+
+button:hover {
+    animation-name: hover-glow;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    background-color: #3f2d49;
+}
+
+.messages {
+    margin: 8px 0;
+    border: 1px solid #ff66ff;
+    border-radius: 2px;
+    padding: 4px 12px;
 }
 
 .hidden {
