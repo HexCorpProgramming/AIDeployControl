@@ -25,7 +25,6 @@ class Control:
                 raise InvalidStateException
 
         self.deployed_process = subprocess.Popen(["sh", "run.sh"], cwd="aideploycontrol/deployment")
-        print(self.deployed_process.pid)
 
     def stop(self):
         if self.deployed_process is None:

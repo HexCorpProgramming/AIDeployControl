@@ -1,4 +1,4 @@
-source HexCorpDiscordAI/env/bin/HexCorpDiscordAI
 cd HexCorpDiscordAI
 git pull
-exec python ai.py 'TOKEN_HERE'
+source env/bin/activate
+exec python ai.py $BOT_TOKEN
