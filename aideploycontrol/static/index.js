@@ -17,24 +17,29 @@ function setElementsHidden(selector, hidden) {
 
 function launchAI() {
     setButtonsDisabled(true);
+    setElementsHidden("#success-launch", true);
     setElementsHidden("#error-launch", true);
     setElementsHidden("#waiting", false);
-    axios.post('/launch').then(Promise.resolve).catch(() => {
+    axios.post('/launch').catch((error) => {
+        console.log(error);
         setElementsHidden("#error-launch", false);
     }).finally(() => {
         setButtonsDisabled(false)
         setElementsHidden("#waiting", true);
+        setElementsHidden("#success-launch", false);
     });
 }
 
 function stopAI() {
     setButtonsDisabled(true);
+    setElementsHidden("#success-stop", true);
     setElementsHidden("#error-stop", true);
     setElementsHidden("#waiting", false);
-    axios.post('/stop').then(Promise.resolve).catch(() => {
+    axios.post('/stop').catch(() => {
         setElementsHidden("#error-stop", false);
     }).finally(() => {
         setButtonsDisabled(false)
         setElementsHidden("#waiting", true);
+        setElementsHidden("#success-stop", false);
     });
 }
