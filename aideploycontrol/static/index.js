@@ -15,31 +15,32 @@ function setElementsHidden(selector, hidden) {
     });
 }
 
+function setFeedback(feedback) {
+    document.getElementById("feedback").innerText = feedback;
+    setElementsHidden("#feedback", !feedback);
+}
+
 function launchAI() {
     setButtonsDisabled(true);
-    setElementsHidden("#success-launch, #error-launch", true);
-    setElementsHidden("#waiting", false);
+    setFeedback("Your request is being handled. Please stand by.");
     axios.post('/launch').then(() => {
-        setElementsHidden("#success-launch", false);
+        setFeedback("Launched successfullly.");
     }).catch((error) => {
         console.log(error);
-        setElementsHidden("#error-launch", false);
+        setFeedback("There was an error launching the AI. Please make sure it is not already running before attempting this operation.");
     }).finally(() => {
         setButtonsDisabled(false)
-        setElementsHidden("#waiting", true);
     });
 }
 
 function stopAI() {
     setButtonsDisabled(true);
-    setElementsHidden("#success-stop, #error-stop", true);
-    setElementsHidden("#waiting", false);
+    setFeedback("Your request is being handled. Please stand by.");
     axios.post('/stop').then(() => {
-        setElementsHidden("#success-stop", false);
+        setFeedback("There was an error stopping the AI. Please make sure it is running before attempting this operation.");
     }).catch(() => {
-        setElementsHidden("#error-stop", false);
+        setFeedback("Stopped successfully.");
     }).finally(() => {
         setButtonsDisabled(false)
-        setElementsHidden("#waiting", true);
     });
 }
