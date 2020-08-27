@@ -20,13 +20,14 @@ function launchAI() {
     setElementsHidden("#success-launch", true);
     setElementsHidden("#error-launch", true);
     setElementsHidden("#waiting", false);
-    axios.post('/launch').catch((error) => {
+    axios.post('/launch').then(() => {
+        setElementsHidden("#success-launch", false);
+    }).catch((error) => {
         console.log(error);
         setElementsHidden("#error-launch", false);
     }).finally(() => {
         setButtonsDisabled(false)
         setElementsHidden("#waiting", true);
-        setElementsHidden("#success-launch", false);
     });
 }
 
@@ -35,11 +36,12 @@ function stopAI() {
     setElementsHidden("#success-stop", true);
     setElementsHidden("#error-stop", true);
     setElementsHidden("#waiting", false);
-    axios.post('/stop').catch(() => {
+    axios.post('/stop').then(() => {
+        setElementsHidden("#success-stop", false);
+    }).catch(() => {
         setElementsHidden("#error-stop", false);
     }).finally(() => {
         setButtonsDisabled(false)
         setElementsHidden("#waiting", true);
-        setElementsHidden("#success-stop", false);
     });
 }

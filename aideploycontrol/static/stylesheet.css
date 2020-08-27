@@ -19,12 +19,19 @@ body {
     to {border-color: #ff66ff;}
 }
 
-button:hover {
+.button:hover {
     animation-name: hover-glow;
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    background-color: #3f2d49;
+    background-color: #815a97;
+}
+
+.button:disabled {
+    color: #a5a5a5;
+    cursor: not-allowed;
+    animation: none;
+    background-color: #231929;
 }
 
 .messages {
