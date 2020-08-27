@@ -1,6 +1,6 @@
 
 function setButtonsDisabled(disabled) {
-    document.querySelectorAll("button").forEach(element => {
+    document.querySelectorAll(".button").forEach(element => {
         element.disabled = disabled;
     });
 }
@@ -17,8 +17,7 @@ function setElementsHidden(selector, hidden) {
 
 function launchAI() {
     setButtonsDisabled(true);
-    setElementsHidden("#success-launch", true);
-    setElementsHidden("#error-launch", true);
+    setElementsHidden("#success-launch, #error-launch", true);
     setElementsHidden("#waiting", false);
     axios.post('/launch').then(() => {
         setElementsHidden("#success-launch", false);
@@ -33,8 +32,7 @@ function launchAI() {
 
 function stopAI() {
     setButtonsDisabled(true);
-    setElementsHidden("#success-stop", true);
-    setElementsHidden("#error-stop", true);
+    setElementsHidden("#success-stop, #error-stop", true);
     setElementsHidden("#waiting", false);
     axios.post('/stop').then(() => {
         setElementsHidden("#success-stop", false);
