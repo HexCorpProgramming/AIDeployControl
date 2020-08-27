@@ -16,6 +16,7 @@
     </p>
     <button class="button" type="button" onclick="launchAI()">Launch the AI</button>
     <button class="button" type="button" onclick="stopAI()">Stop the AI</button>
+    <button class="button" type="button" onclick="resetDB()">Reset the database</button>
     <div id="messages-box" class="messages">
         <h4>Errors and Warnings</h4>
         <p id="feedback" class="hidden">
@@ -37,6 +38,15 @@
         Clicking this button only works, if the AI is currently running.<br>
         When you click this button the currently launched QA instance of the AI will be stopped. It may appear to still
         be logged on to discord, but will not react to commands.
+    </p>
+    <h4>Reset the database</h4>
+    <p>
+        Clicking this button only works, if the AI is not currently running and the database was successfully
+        initialized before.<br>
+        When you click this button the current database will be removed and it will be reinitialized again when the AI
+        is launched again.<br>
+        This will remove all data and will for example lead to stored drones being stuck in storage,
+        because there is no more timer to release them.
     </p>
 </body>
 

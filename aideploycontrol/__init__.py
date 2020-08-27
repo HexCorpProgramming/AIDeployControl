@@ -34,4 +34,9 @@ def create_app(test_config=None):
         CONTROL.stop()
         return ""
 
+    @app.route("/reset-db", methods=["POST"])
+    def reset_db():
+        CONTROL.reset_db()
+        return ""
+
     return app

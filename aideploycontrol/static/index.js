@@ -37,9 +37,21 @@ function stopAI() {
     setButtonsDisabled(true);
     setFeedback("Your request is being handled. Please stand by.");
     axios.post('/stop').then(() => {
-        setFeedback("There was an error stopping the AI. Please make sure it is running before attempting this operation.");
-    }).catch(() => {
         setFeedback("Stopped successfully.");
+    }).catch(() => {
+        setFeedback("There was an error stopping the AI. Please make sure it is running before attempting this operation.");
+    }).finally(() => {
+        setButtonsDisabled(false)
+    });
+}
+
+function resetDB() {
+    setButtonsDisabled(true);
+    setFeedback("Your request is being handled. Please stand by.");
+    axios.post('/reset-db').then(() => {
+        setFeedback("Reset successfully.");
+    }).catch(() => {
+        setFeedback("There was an error resetting the database. Please make sure the AI is stopped and the DB was initialized.");
     }).finally(() => {
         setButtonsDisabled(false)
     });
