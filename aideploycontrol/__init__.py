@@ -39,4 +39,8 @@ def create_app(test_config=None):
         CONTROL.reset_db()
         return ""
 
+    @app.route("/status", methods=["GET"])
+    def status():
+        return CONTROL.status()
+
     return app

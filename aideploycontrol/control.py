@@ -41,3 +41,8 @@ class Control:
             raise InvalidStateException
 
         remove(f"{DEPLOYMENT}/HexCorpDiscordAI/ai.db")
+
+    def status(self):
+        return {
+            "running": self.deployed_process is not None
+        }

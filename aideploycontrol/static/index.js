@@ -20,6 +20,12 @@ function setFeedback(feedback) {
     setElementsHidden("#feedback", !feedback);
 }
 
+function updateStatus() {
+    axios.get("/status").then(status => {
+        document.getElementById("ai-status").innerText = status.data.running ? "ONLINE" : "OFFLINE";
+    });
+}
+
 function launchAI() {
     setButtonsDisabled(true);
     setFeedback("Your request is being handled. Please stand by.");
@@ -29,7 +35,8 @@ function launchAI() {
         console.log(error);
         setFeedback("There was an error launching the AI. Please make sure it is not already running before attempting this operation.");
     }).finally(() => {
-        setButtonsDisabled(false)
+        setButtonsDisabled(false);
+        updateStatus();
     });
 }
 
@@ -41,7 +48,8 @@ function stopAI() {
     }).catch(() => {
         setFeedback("There was an error stopping the AI. Please make sure it is running before attempting this operation.");
     }).finally(() => {
-        setButtonsDisabled(false)
+        setButtonsDisabled(false);
+        updateStatus();
     });
 }
 
@@ -53,6 +61,9 @@ function resetDB() {
     }).catch(() => {
         setFeedback("There was an error resetting the database. Please make sure the AI is stopped and the DB was initialized.");
     }).finally(() => {
-        setButtonsDisabled(false)
+        setButtonsDisabled(false);
+        updateStatus();
     });
 }
+
+updateStatus();
