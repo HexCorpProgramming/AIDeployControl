@@ -1,5 +1,7 @@
 FROM python:3.9-slim-bullseye
 
+RUN apt install git
+
 COPY requirements.txt /root
 RUN pip3 install -r /root/requirements.txt
 
