@@ -1,4 +1,4 @@
-1 FROM python:3.9-slim-bullseye
+FROM python:3.9-slim-bullseye
 
 COPY requirements.txt /root
 RUN pip3 install -r /root/requirements.txt
