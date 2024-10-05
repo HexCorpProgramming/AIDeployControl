@@ -20,14 +20,14 @@ class Control:
 
         # initialize the AI repo
         if not path.exists(f"{DEPLOYMENT}/initialized"):
-            init_process = subprocess.run(["sh", "init.sh"], cwd="aideploycontrol/deployment")
+            init_process = subprocess.run(["bash", "init.sh"], cwd="aideploycontrol/deployment")
             if init_process.returncode == 0:
                 with open(f"{DEPLOYMENT}/initialized", "w") as initialized_file:
                     initialized_file.write("1")
             else:
                 raise InvalidStateException
 
-        self.deployed_process = subprocess.Popen(["sh", "run.sh"], cwd=DEPLOYMENT)
+        self.deployed_process = subprocess.Popen(["bash", "run.sh"], cwd=DEPLOYMENT)
 
     def stop(self):
         if self.deployed_process is None:
